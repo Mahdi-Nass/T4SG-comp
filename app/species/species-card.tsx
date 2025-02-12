@@ -47,13 +47,11 @@ export default function SpeciesCard({
       <h4 className="text-lg font-light italic">{species.common_name}</h4>
       <p>{species.description ? species.description.slice(0, 150).trim() + "..." : ""}</p>
 
-      {/* Learn More button */}
       <Button className="mt-3 w-full" onClick={() => setLearnMoreOpen(true)}>
         Learn More
       </Button>
       <LearnMoreDialog species={species} open={learnMoreOpen} setOpen={setLearnMoreOpen} sessionId={sessionId} />
 
-      {/* Edit button */}
       <Button className="mt-2 w-full" variant="outline" onClick={handleEditClick}>
         Edit
       </Button>
