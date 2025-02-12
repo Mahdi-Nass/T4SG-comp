@@ -5,12 +5,14 @@ import {
   Dialog,
   DialogClose,
   DialogContent,
-  DialogDescription,
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
 
+import Comments from "./comments"
+
 type Species = {
+  id: number;
   scientific_name: string;
   common_name: string | null;
   total_population: number | null;
@@ -22,10 +24,12 @@ export default function LearnMoreDialog({
   species,
   open,
   setOpen,
+  sessionId,
 }: {
   species: Species;
   open: boolean;
   setOpen: (value: boolean) => void;
+  sessionId: string;
 }) {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -60,6 +64,7 @@ export default function LearnMoreDialog({
               <p className="text-sm">{species.description}</p>
             </div>
           )}
+          <Comments speciesId={species.id} sessionId={sessionId} />
         </div>
         <DialogClose asChild>
           <Button type="button" variant="secondary" className="w-full">
